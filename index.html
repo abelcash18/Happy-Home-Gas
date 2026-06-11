@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Gas Station Name] — Quality Cooking Gas & Accessories</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="[Gas Station Name] home"><span class="logo" aria-hidden="true">🔥</span><span>[Gas Station Name]</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#order">Order</a>
+        <a href="#track">Track</a>
+        <a href="#promos">Promos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <div class="container hero">
+      <div>
+        <span class="eyebrow">⚡ Same-day gas delivery in [Delivery Areas]</span>
+        <h1>Quality cooking gas & accessories <span class="highlight">at your fingertips.</span></h1>
+        <p class="lead">Get top-notch cooking gas and trusted gas accessories from <strong>[Gas Station Name]</strong>. Order online, choose delivery or pickup, complete a demo checkout, and track your order ID from confirmation to delivery.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#order">Start Online Order</a>
+          <a class="btn btn-secondary" href="#track">Track Order ID</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Delivery snapshot">
+        <div class="delivery-panel">
+          <span class="tag">Demo Website</span>
+          <h2 style="margin-top:12px; font-size:2.1rem;">Fast refill. Safe handling. Friendly staff.</h2>
+          <p class="small">Replace this panel with a real staff/product photo, brand logo, and exact delivery promise.</p>
+          <div class="gauge" aria-label="Business highlights">
+            <div class="metric"><strong>24/7</strong><span>Order demo</span></div>
+            <div class="metric"><strong>4.9★</strong><span>Reviews</span></div>
+            <div class="metric"><strong>₦---</strong><span>From price</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">About Us</span>
+            <h2>Built for safe, reliable cooking gas supply.</h2>
+          </div>
+          <p>[Gas Station Name] is a placeholder cooking gas supplier serving households, restaurants, and small businesses in [Location]. Our mission is to make gas refills, accessories, and delivery simple, transparent, and safe.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card"><div class="card-icon">🛡️</div><h3>Safety first</h3><p>Trained attendants, careful cylinder handling, and clear refill guidance for every customer.</p></article>
+          <article class="card"><div class="card-icon">🚚</div><h3>Reliable delivery</h3><p>Delivery and pickup options for [Delivery Areas]. Replace these placeholders with your real service zones.</p></article>
+          <article class="card"><div class="card-icon">💳</div><h3>Flexible payments</h3><p>Demo checkout is included. Connect Paystack, Flutterwave, bank transfer, or POS later for real payments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Product Catalog</span>
+            <h2>Cooking gas, cylinders & accessories.</h2>
+          </div>
+          <p>Placeholder products and prices are used for this demo. Add items to the cart below to test the ordering flow.</p>
+        </div>
+        <div id="productGrid" class="grid grid-3" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Services & Delivery</span>
+            <h2>Choose delivery or station pickup.</h2>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <article class="card"><div class="card-icon">🏍️</div><h3>Doorstep delivery</h3><p>Placeholder delivery to [Delivery Areas]. Add real delivery fees and estimated arrival windows.</p></article>
+          <article class="card"><div class="card-icon">🏪</div><h3>Station pickup</h3><p>Customers can reserve products online and pick up at [Full Address].</p></article>
+          <article class="card"><div class="card-icon">🔁</div><h3>Cylinder exchange</h3><p>Use the order notes field for empty-cylinder pickup, swap requests, or special instructions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Online Ordering</span>
+            <h2>Place a demo order in minutes.</h2>
+          </div>
+          <p>This checkout is a working demo only. It generates an order ID and stores the order in this browser session where supported.</p>
+        </div>
+        <div class="order-wrap">
+          <aside class="card">
+            <h3>Your cart</h3>
+            <div id="cartItems" aria-live="polite"></div>
+            <div class="summary-row"><span>Subtotal</span><strong id="subtotal">₦0</strong></div>
+            <div class="summary-row"><span>Demo delivery fee</span><strong id="deliveryFee">₦0</strong></div>
+            <div class="summary-row" style="font-size:1.2rem;"><span>Total</span><strong id="total">₦0</strong></div>
+            <p class="small">Prices are placeholders. Replace with real LPG prices and accessory costs.</p>
+          </aside>
+          <section class="card" style="padding:24px; margin:0;">
+            <h3>Customer & payment details</h3>
+            <div class="grid grid-2" style="margin-top:16px;">
+              <div class="field"><label for="customerName">Full name</label><input id="customerName" placeholder="e.g., Customer Name" autocomplete="name"></div>
+              <div class="field"><label for="customerPhone">Phone number</label><input id="customerPhone" placeholder="e.g., +234 000 000 0000" autocomplete="tel"></div>
+            </div>
+            <div class="grid grid-2">
+              <div class="field"><label for="customerEmail">Email</label><input id="customerEmail" type="email" placeholder="customer@example.com" autocomplete="email"></div>
+              <div class="field"><label for="fulfilment">Delivery / pickup</label><select id="fulfilment"><option value="Delivery">Delivery to address</option><option value="Pickup">Pickup at station</option></select></div>
+            </div>
+            <div class="field"><label for="address">Delivery address or pickup note</label><textarea id="address" rows="3" placeholder="[Customer delivery address] or pickup timing note"></textarea></div>
+            <div class="grid grid-2">
+              <div class="field"><label for="paymentMethod">Demo checkout method</label><select id="paymentMethod"><option>Demo card checkout</option><option>Pay on delivery placeholder</option><option>Bank transfer placeholder</option></select></div>
+              <div class="field"><label for="promoCode">Promo code</label><input id="promoCode" placeholder="Try GAS10 for demo 10% off"></div>
+            </div>
+            <div class="field"><label for="notes">Order notes</label><textarea id="notes" rows="2" placeholder="Cylinder exchange, delivery instructions, accessory preference..."></textarea></div>
+            <div class="button-row">
+              <button id="placeOrder" class="btn btn-primary" type="button">Complete Demo Checkout</button>
+              <button id="clearCart" class="btn btn-secondary" type="button">Clear Cart</button>
+            </div>
+            <div id="orderNotice" class="notice" role="status"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="track">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Order Tracking</span>
+            <h2>Track by generated order ID.</h2>
+          </div>
+          <p>Enter the order ID shown after checkout. Example format: <strong>GAS-20260609-1234</strong>.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <label for="trackInput">Order ID</label>
+            <div class="button-row" style="align-items: stretch;">
+              <input id="trackInput" placeholder="Paste order ID here" style="flex:1; min-width:220px;">
+              <button id="trackBtn" class="btn btn-dark" type="button">Track Order</button>
+            </div>
+            <div id="trackResult" class="notice warning" role="status"></div>
+          </div>
+          <div class="card">
+            <h3>Typical delivery stages</h3>
+            <div class="track-status">
+              <div class="step active"><span class="dot"></span><span>Order received</span></div>
+              <div class="step"><span class="dot"></span><span>Payment/demo checkout confirmed</span></div>
+              <div class="step"><span class="dot"></span><span>Dispatch preparing cylinder</span></div>
+              <div class="step"><span class="dot"></span><span>Out for delivery / ready for pickup</span></div>
+              <div class="step"><span class="dot"></span><span>Completed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Promotions & Discounts</span>
+            <h2>Keep customers coming back.</h2>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <article class="card promo"><span class="tag">Demo Code</span><h3>GAS10</h3><p>Apply GAS10 during checkout for a 10% demo discount.</p></article>
+          <article class="card"><div class="card-icon">🎁</div><h3>Accessory bundle</h3><p>[Promo Placeholder]: Buy a regulator and hose together to unlock a discount.</p></article>
+          <article class="card"><div class="card-icon">🏆</div><h3>Loyalty refill points</h3><p>[Promo Placeholder]: Reward repeat customers after a set number of refills.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Testimonials</span>
+            <h2>Sample customer reviews.</h2>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <article class="card testimonial"><div class="stars">★★★★★</div><p>“Fast delivery and the attendant explained cylinder safety clearly.”</p><strong>— [Customer Name], [Area]</strong></article>
+          <article class="card testimonial"><div class="stars">★★★★★</div><p>“The online order ID made it easy to follow up on my refill.”</p><strong>— [Restaurant Owner], [Location]</strong></article>
+          <article class="card testimonial"><div class="stars">★★★★☆</div><p>“Good accessory options and friendly support over the phone.”</p><strong>— [Home Customer], [Area]</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Contact & Map</span>
+            <h2>Visit us or order online.</h2>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>[Gas Station Name]</h3>
+            <p><strong>Address:</strong> [Full Address, City, State/Country]</p>
+            <p><strong>Phone:</strong> [Phone Number]</p>
+            <p><strong>Email:</strong> [Email Address]</p>
+            <p><strong>Hours:</strong> [Opening Hours]</p>
+            <p><strong>Delivery areas:</strong> [Area 1], [Area 2], [Area 3]</p>
+            <div class="button-row"><a class="btn btn-primary" href="#order">Order now</a><a class="btn btn-secondary" href="mailto:[Email Address]">Email us</a></div>
+          </div>
+          <div class="map-placeholder">
+            <div>
+              <div style="font-size:2.8rem;">📍</div>
+              <h3>Map Placeholder</h3>
+              <p>Replace this block with your Google Maps embed for [Location].</p>
+            </div>
+          </div>
+        </div>
+        <div class="admin-note">
+          <strong>Admin handoff note:</strong>
+          <p class="small">This is a frontend demo. Orders are stored in the browser where storage is available, or in temporary memory if storage is blocked by the preview sandbox. A production build needs a backend database, real payment provider integration, and an admin dashboard to update delivery status.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="logo" aria-hidden="true">🔥</span><span>[Gas Station Name]</span></div>
+    <p>Quality Cooking Gas & Accessories at Your Fingertips · [Location]</p>
+  </footer>
+<script src="index.js"></script>
+</body>
+</html>
