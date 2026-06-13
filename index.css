@@ -1,6 +1,6 @@
 :root {
-      --orange: #ff7a00;
-      --deep-orange: #ea580c;
+      --orange: hsl(254, 100%, 50%);
+      --deep-orange: hsl(212, 90%, 48%);
       --yellow: #ffd43b;
       --cream: #fff7ed;
       --charcoal: #1f2937;

@@ -149,8 +149,6 @@
 
     renderProducts();
     renderCart();
-  </script>
-  <script>
     const send = () => parent.postMessage(
       { type: 'web_page_height', height: document.body.scrollHeight },
       '*'
