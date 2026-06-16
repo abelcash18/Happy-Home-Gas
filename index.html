@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Happy Home Gas provides cooking gas refills, gas accessories, POS services, delivery, pickup, and order tracking." />
-  <title>Happy Home Gas | Cooking Gas, Accessories & POS</title>
+  <meta name="description" content="Happy Home Gas shows daily cooking gas prices, accessories, location, contact details, and station activity photos." />
+  <title>Happy Home Gas | Gas Prices, Accessories & Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
         <span class="brand-mark" aria-hidden="true">H</span>
         <span>
           <strong>Happy Home Gas</strong>
-          <small>Gas • POS • Utilities</small>
+          <small>Gas, accessories, POS</small>
         </span>
       </a>
 
@@ -29,11 +29,10 @@
       </button>
 
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
+        <a href="#prices">Prices</a>
         <a href="#services">Services</a>
-        <a href="#order">Order</a>
-        <a href="#track">Track</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -43,260 +42,157 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Same-day gas support for homes and businesses</span>
-          <h1>Cooking gas, accessories, and POS services in one trusted stop.</h1>
+          <span class="eyebrow">Daily cooking gas price updates</span>
+          <h1>Know today&apos;s gas and accessory prices before you visit.</h1>
           <p class="lead">
-            Happy Home Gas helps customers refill cylinders, buy essential gas accessories, complete POS transactions, and track demo orders with a simple online flow.
+            Happy Home Gas provides cooking gas refills, trusted accessories, POS services, and daily station activity updates for customers.
           </p>
           <div class="action-row">
-            <a class="btn btn-primary" href="#order">Start order</a>
-            <a class="btn btn-light" href="#products">View products</a>
+            <a class="btn btn-primary" href="#prices">Check prices</a>
+            <a class="btn btn-light" href="https://wa.me/2340000000000" target="_blank" rel="noopener">WhatsApp us</a>
           </div>
         </div>
 
-        <figure class="hero-media" aria-label="Happy Home Gas POS service banner">
-          <img src="img.jpg" alt="Happy Home Gas POS service banner" />
+        <figure class="hero-media">
+          <img src="img.jpg" alt="Happy Home Gas station POS service banner" />
           <figcaption>
-            <strong>Open daily</strong>
-            <span>Gas refills, accessories, POS withdrawals, transfers, bill payments, and subscriptions.</span>
+            <strong>Open daily: 6:30am - 9:00pm</strong>
+            <span>Gas refills, accessories, withdrawals, deposits, transfers, bill payments, and subscriptions.</span>
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">About Us</span>
-          <h2>Reliable service with practical safety at the center.</h2>
-          <p>
-            We serve households, restaurants, and small businesses with everyday cooking gas support, helpful staff, and clear ordering steps.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="card">
-            <span class="card-icon" aria-hidden="true">01</span>
-            <h3>Safe handling</h3>
-            <p>Clear cylinder checks, refill guidance, and support for customers who need exchange instructions.</p>
-          </article>
-          <article class="card">
-            <span class="card-icon" aria-hidden="true">02</span>
-            <h3>Fast fulfillment</h3>
-            <p>Choose delivery or pickup, then keep your generated order ID for follow-up and tracking.</p>
-          </article>
-          <article class="card">
-            <span class="card-icon" aria-hidden="true">03</span>
-            <h3>Extra convenience</h3>
-            <p>POS withdrawals, deposits, transfers, subscriptions, and utility payment support are available on-site.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="products" class="section section-muted">
+    <section id="prices" class="section section-muted">
       <div class="container">
         <div class="section-head split">
           <div>
-            <span class="eyebrow">Product Catalog</span>
-            <h2>Gas refills and accessories.</h2>
+            <span class="eyebrow">Price List</span>
+            <h2>Gas and accessories.</h2>
           </div>
-          <p>Use the catalog to test the cart and demo checkout. Replace the sample prices whenever your live rates change.</p>
+          <p>Update these prices whenever your daily gas rate changes. Customers can contact you by WhatsApp or email to confirm availability.</p>
         </div>
 
-        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+        <div class="price-board">
+          <article class="price-panel">
+            <div>
+              <span class="tag">Cooking Gas</span>
+              <h3>Gas refill prices</h3>
+            </div>
+            <div id="gasPriceList" class="price-list" aria-live="polite"></div>
+          </article>
+
+          <article class="price-panel">
+            <div>
+              <span class="tag">Accessories</span>
+              <h3>Accessory prices</h3>
+            </div>
+            <div id="accessoryPriceList" class="price-list" aria-live="polite"></div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="services" class="section">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">Services</span>
-          <h2>Built around everyday errands.</h2>
-        </div>
-
-        <div class="service-list">
-          <article>
-            <h3>Doorstep delivery</h3>
-            <p>Send gas refills and accessories to a customer address with delivery notes for directions.</p>
-          </article>
-          <article>
-            <h3>Station pickup</h3>
-            <p>Reserve products online and pick them up at the shop when they are ready.</p>
-          </article>
-          <article>
-            <h3>POS and bills</h3>
-            <p>Support withdrawals, deposits, transfers, NEPA bills, airtime, cable TV, and subscriptions.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="order" class="section section-muted">
-      <div class="container">
-        <div class="section-head split">
-          <div>
-            <span class="eyebrow">Online Ordering</span>
-            <h2>Place a demo order.</h2>
-          </div>
-          <p>This checkout stores orders in the browser where available. A production version should connect to a database and payment provider.</p>
-        </div>
-
-        <div class="order-layout">
-          <aside class="card cart-card" aria-label="Shopping cart">
-            <h3>Your cart</h3>
-            <div id="cartItems" class="cart-items" aria-live="polite"></div>
-            <div class="summary">
-              <div><span>Subtotal</span><strong id="subtotal">₦0</strong></div>
-              <div><span>Delivery fee</span><strong id="deliveryFee">₦0</strong></div>
-              <div><span>Total</span><strong id="total">₦0</strong></div>
-            </div>
-            <p class="fine-print">Try promo code <strong>GAS10</strong> for a demo discount.</p>
-          </aside>
-
-          <form class="card checkout-card" id="checkoutForm">
-            <h3>Customer details</h3>
-            <div class="form-grid">
-              <label>
-                Full name
-                <input id="customerName" name="customerName" autocomplete="name" placeholder="Customer name" required />
-              </label>
-              <label>
-                Phone number
-                <input id="customerPhone" name="customerPhone" autocomplete="tel" placeholder="+234 000 000 0000" required />
-              </label>
-              <label>
-                Email
-                <input id="customerEmail" name="customerEmail" type="email" autocomplete="email" placeholder="customer@example.com" />
-              </label>
-              <label>
-                Delivery / pickup
-                <select id="fulfilment" name="fulfilment">
-                  <option value="Delivery">Delivery to address</option>
-                  <option value="Pickup">Pickup at station</option>
-                </select>
-              </label>
-            </div>
-
-            <label>
-              Address or pickup note
-              <textarea id="address" name="address" rows="3" placeholder="Delivery address or pickup timing note" required></textarea>
-            </label>
-
-            <div class="form-grid">
-              <label>
-                Checkout method
-                <select id="paymentMethod" name="paymentMethod">
-                  <option>Demo card checkout</option>
-                  <option>Pay on delivery placeholder</option>
-                  <option>Bank transfer placeholder</option>
-                </select>
-              </label>
-              <label>
-                Promo code
-                <input id="promoCode" name="promoCode" placeholder="GAS10" />
-              </label>
-            </div>
-
-            <label>
-              Order notes
-              <textarea id="notes" name="notes" rows="2" placeholder="Cylinder exchange, delivery instructions, accessory preference..."></textarea>
-            </label>
-
-            <div class="action-row">
-              <button class="btn btn-primary" type="submit">Complete checkout</button>
-              <button id="clearCart" class="btn btn-light" type="button">Clear cart</button>
-            </div>
-            <div id="orderNotice" class="notice" role="status"></div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section id="track" class="section">
-      <div class="container">
-        <div class="section-head split">
-          <div>
-            <span class="eyebrow">Order Tracking</span>
-            <h2>Track a generated order ID.</h2>
-          </div>
-          <p>Order IDs use the format <strong>GAS-YYYYMMDD-1234</strong>.</p>
-        </div>
-
-        <div class="track-layout">
-          <div class="card">
-            <label for="trackInput">Order ID</label>
-            <div class="input-action">
-              <input id="trackInput" placeholder="Paste order ID here" />
-              <button id="trackBtn" class="btn btn-dark" type="button">Track</button>
-            </div>
-            <div id="trackResult" class="notice warning" role="status"></div>
-          </div>
-
-          <div class="card">
-            <h3>Delivery stages</h3>
-            <ol class="timeline">
-              <li class="active">Order received</li>
-              <li>Payment confirmed</li>
-              <li>Dispatch preparing order</li>
-              <li>Out for delivery or ready for pickup</li>
-              <li>Completed</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="promos" class="section section-muted">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Promotions</span>
-          <h2>Simple offers for repeat customers.</h2>
+          <span class="eyebrow">What We Offer</span>
+          <h2>Everyday gas station services in one place.</h2>
         </div>
 
         <div class="feature-grid">
-          <article class="card promo-card">
-            <span>Demo code</span>
-            <h3>GAS10</h3>
-            <p>Apply at checkout for a 10% demo discount.</p>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">01</span>
+            <h3>Gas refills</h3>
+            <p>Clean cylinder handling and refill support for homes, restaurants, and small businesses.</p>
           </article>
           <article class="card">
-            <h3>Accessory bundle</h3>
-            <p>Offer discounts when customers buy regulators, hoses, clips, or burners together.</p>
+            <span class="card-icon" aria-hidden="true">02</span>
+            <h3>Gas accessories</h3>
+            <p>Regulators, hoses, clips, burners, and other essentials customers ask for often.</p>
           </article>
           <article class="card">
-            <h3>Loyalty refills</h3>
-            <p>Reward customers after a set number of cylinder refills.</p>
+            <span class="card-icon" aria-hidden="true">03</span>
+            <h3>POS services</h3>
+            <p>Withdrawals, deposits, transfers, subscriptions, airtime, cable TV, and utility payments.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="gallery" class="section section-muted">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Contact</span>
-          <h2>Visit us or start an order online.</h2>
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Gallery</span>
+            <h2>Daily activity photos.</h2>
+          </div>
+          <p>Add real station photos here: refills, staff at work, product stock, POS service desk, and customer activity.</p>
         </div>
 
-        <div class="contact-layout">
-          <div class="card contact-card">
-            <h3>Happy Home Gas</h3>
-            <p><strong>Address:</strong> Add your full shop address here.</p>
-            <p><strong>Phone:</strong> Add your phone number here.</p>
-            <p><strong>Email:</strong> <a href="mailto:josephabel540@gmail.com">josephabel540@gmail.com</a></p>
-            <p><strong>Hours:</strong> 6:30am - 9:00pm</p>
-            <p><strong>Delivery areas:</strong> Add your active service areas here.</p>
-            <div class="action-row">
-              <a class="btn btn-primary" href="#order">Order now</a>
-              <a class="btn btn-light" href="mailto:josephabel540@gmail.com">Email us</a>
-            </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item featured">
+            <img src="img.jpg" alt="Happy Home Gas service banner" />
+            <figcaption>POS and utility service banner</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 2</span>
+            <figcaption>Gas refill activity</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 3</span>
+            <figcaption>Accessories display</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 4</span>
+            <figcaption>Station staff at work</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Location</span>
+            <h2>Find Happy Home Gas.</h2>
+          </div>
+          <p>Replace the map coordinates with your exact shop location when ready.</p>
+        </div>
+
+        <div class="location-layout">
+          <div class="map-frame">
+            <iframe
+              title="Happy Home Gas location on OpenStreetMap"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=3.3400%2C6.4300%2C3.4700%2C6.5600&amp;layer=mapnik&amp;marker=6.4950%2C3.4050"
+              loading="lazy">
+            </iframe>
           </div>
 
-          <div class="map-panel" aria-label="Map placeholder">
-            <span>Map</span>
-            <h3>Add your Google Maps embed here</h3>
-            <p>Replace this panel when your business address is ready.</p>
+          <aside class="card contact-card">
+            <h3>Visit the station</h3>
+            <p><strong>Address:</strong> Add your full shop address here.</p>
+            <p><strong>Hours:</strong> 6:30am - 9:00pm</p>
+            <p><strong>Delivery areas:</strong> Add your service areas here.</p>
+            <a class="map-link" href="https://www.openstreetmap.org/?mlat=6.4950&amp;mlon=3.4050#map=13/6.4950/3.4050" target="_blank" rel="noopener">Open larger map</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-muted">
+      <div class="container">
+        <div class="contact-strip">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>Ask about today&apos;s prices or availability.</h2>
+            <p>Email or WhatsApp Happy Home Gas for current gas rates, accessories, POS service questions, or directions.</p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:josephabel540@gmail.com">Email us</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/2340000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
           </div>
         </div>
       </div>
@@ -308,7 +204,7 @@
       <span class="brand-mark" aria-hidden="true">H</span>
       <span>
         <strong>Happy Home Gas</strong>
-        <small>Quality cooking gas and convenient POS services.</small>
+        <small>Daily gas prices, accessories, POS services, and station updates.</small>
       </span>
     </div>
   </footer>
