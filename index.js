@@ -1,157 +1,345 @@
-    const products = [
-      { id: 'gas-3kg', name: '3kg Cooking Gas Refill', price: 4500, tag: 'Household', icon: '🔥', desc: 'Placeholder LPG refill price for small cylinders.' },
-      { id: 'gas-6kg', name: '6kg Cooking Gas Refill', price: 9000, tag: 'Popular', icon: '🛢️', desc: 'Common family-size refill option.' },
-      { id: 'gas-12kg', name: '12.5kg Cooking Gas Refill', price: 18500, tag: 'Best Seller', icon: '🧯', desc: 'Larger refill for homes and food businesses.' },
-      { id: 'regulator', name: 'Gas Regulator', price: 6500, tag: 'Accessory', icon: '⚙️', desc: 'Placeholder regulator product listing.' },
-      { id: 'hose', name: 'Gas Hose + Clips', price: 3500, tag: 'Accessory', icon: '🔗', desc: 'Hose and clips bundle placeholder.' },
-      { id: 'burner', name: 'Portable Gas Burner', price: 12000, tag: 'Accessory', icon: '🍳', desc: 'Portable burner for compact cooking setups.' }
-    ];
+const products = [
+  {
+    id: "gas-3kg",
+    name: "3kg Cooking Gas Refill",
+    price: 4500,
+    tag: "Household",
+    icon: "3kg",
+    desc: "Small-cylinder refill for light home cooking."
+  },
+  {
+    id: "gas-6kg",
+    name: "6kg Cooking Gas Refill",
+    price: 9000,
+    tag: "Popular",
+    icon: "6kg",
+    desc: "Family-size refill for everyday meals."
+  },
+  {
+    id: "gas-12kg",
+    name: "12.5kg Cooking Gas Refill",
+    price: 18500,
+    tag: "Best Seller",
+    icon: "12.5",
+    desc: "Larger refill for homes and food businesses."
+  },
+  {
+    id: "regulator",
+    name: "Gas Regulator",
+    price: 6500,
+    tag: "Accessory",
+    icon: "REG",
+    desc: "Essential replacement regulator for safer cylinder use."
+  },
+  {
+    id: "hose",
+    name: "Gas Hose + Clips",
+    price: 3500,
+    tag: "Accessory",
+    icon: "H+C",
+    desc: "Gas hose and clips bundle for clean setup."
+  },
+  {
+    id: "burner",
+    name: "Portable Gas Burner",
+    price: 12000,
+    tag: "Accessory",
+    icon: "PAN",
+    desc: "Compact burner for small kitchens and quick cooking."
+  }
+];
 
-    let cart = {};
-    let memoryOrders = {};
-    const currency = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 });
+const cart = new Map();
+let memoryOrders = {};
 
-    const Storage = {
-      getOrders() {
-        try {
-          const raw = window.localStorage.getItem('gasDemoOrders');
-          return raw ? JSON.parse(raw) : memoryOrders;
-        } catch (e) {
-          return memoryOrders;
-        }
-      },
-      saveOrder(order) {
-        const orders = this.getOrders();
-        orders[order.id] = order;
-        memoryOrders = orders;
-        try { window.localStorage.setItem('gasDemoOrders', JSON.stringify(orders)); } catch (e) {}
-      },
-      getOrder(id) {
-        return this.getOrders()[String(id || '').trim().toUpperCase()];
-      }
-    };
+const currency = new Intl.NumberFormat("en-NG", {
+  style: "currency",
+  currency: "NGN",
+  maximumFractionDigits: 0
+});
 
-    function formatNaira(amount) { return currency.format(amount).replace('NGN', '₦'); }
-    function productById(id) { return products.find(p => p.id === id); }
-    function subtotal() { return Object.entries(cart).reduce((sum, [id, qty]) => sum + productById(id).price * qty, 0); }
-    function deliveryFee() { return document.getElementById('fulfilment')?.value === 'Delivery' && subtotal() > 0 ? 1500 : 0; }
-    function discountAmount() {
-      const code = document.getElementById('promoCode')?.value.trim().toUpperCase();
-      return code === 'GAS10' ? Math.round(subtotal() * 0.10) : 0;
+const selectors = {
+  productGrid: document.querySelector("#productGrid"),
+  cartItems: document.querySelector("#cartItems"),
+  subtotal: document.querySelector("#subtotal"),
+  deliveryFee: document.querySelector("#deliveryFee"),
+  total: document.querySelector("#total"),
+  checkoutForm: document.querySelector("#checkoutForm"),
+  clearCart: document.querySelector("#clearCart"),
+  fulfilment: document.querySelector("#fulfilment"),
+  promoCode: document.querySelector("#promoCode"),
+  orderNotice: document.querySelector("#orderNotice"),
+  trackInput: document.querySelector("#trackInput"),
+  trackBtn: document.querySelector("#trackBtn"),
+  trackResult: document.querySelector("#trackResult"),
+  navToggle: document.querySelector(".nav-toggle"),
+  navLinks: document.querySelector("#navLinks")
+};
+
+const storage = {
+  getOrders() {
+    try {
+      const raw = window.localStorage.getItem("happyHomeGasOrders");
+      return raw ? JSON.parse(raw) : memoryOrders;
+    } catch {
+      return memoryOrders;
     }
-    function total() { return Math.max(0, subtotal() + deliveryFee() - discountAmount()); }
+  },
+  saveOrder(order) {
+    const orders = this.getOrders();
+    orders[order.id] = order;
+    memoryOrders = orders;
 
-    function renderProducts() {
-      const grid = document.getElementById('productGrid');
-      grid.innerHTML = products.map(p => `
+    try {
+      window.localStorage.setItem("happyHomeGasOrders", JSON.stringify(orders));
+    } catch {
+      // Browser storage may be blocked in previews; memoryOrders keeps the demo usable.
+    }
+  },
+  getOrder(id) {
+    return this.getOrders()[String(id || "").trim().toUpperCase()];
+  }
+};
+
+function formatNaira(amount) {
+  return currency.format(amount).replace("NGN", "₦");
+}
+
+function getProduct(id) {
+  return products.find((product) => product.id === id);
+}
+
+function getSubtotal() {
+  return [...cart.entries()].reduce((sum, [id, quantity]) => {
+    return sum + getProduct(id).price * quantity;
+  }, 0);
+}
+
+function getDeliveryFee() {
+  return selectors.fulfilment.value === "Delivery" && getSubtotal() > 0 ? 1500 : 0;
+}
+
+function getDiscount() {
+  const code = selectors.promoCode.value.trim().toUpperCase();
+  return code === "GAS10" ? Math.round(getSubtotal() * 0.1) : 0;
+}
+
+function getTotal() {
+  return Math.max(0, getSubtotal() + getDeliveryFee() - getDiscount());
+}
+
+function renderProducts() {
+  selectors.productGrid.innerHTML = products
+    .map((product) => {
+      return `
         <article class="card product-card">
-          <div class="product-img"><div class="product-visual" aria-hidden="true">${p.icon}</div></div>
-          <div class="product-meta"><div><span class="tag">${p.tag}</span><h3 style="margin-top:8px;">${p.name}</h3></div><div class="price">${formatNaira(p.price)}</div></div>
-          <p class="small">${p.desc}</p>
-          <button class="btn btn-primary btn-small" type="button" onclick="addToCart('${p.id}')">Add to order</button>
+          <div class="product-visual" aria-hidden="true">${product.icon}</div>
+          <div class="product-meta">
+            <div>
+              <span class="tag">${product.tag}</span>
+              <h3>${product.name}</h3>
+            </div>
+            <strong class="price">${formatNaira(product.price)}</strong>
+          </div>
+          <p class="small">${product.desc}</p>
+          <button class="btn btn-primary btn-small" type="button" data-add-product="${product.id}">Add to order</button>
         </article>
-      `).join('');
-    }
+      `;
+    })
+    .join("");
+}
 
-    function addToCart(id) {
-      cart[id] = (cart[id] || 0) + 1;
-      renderCart();
-      document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+function renderCart() {
+  const entries = [...cart.entries()];
 
-    function updateQty(id, delta) {
-      cart[id] = Math.max(0, (cart[id] || 0) + delta);
-      if (cart[id] === 0) delete cart[id];
-      renderCart();
-    }
+  selectors.cartItems.innerHTML = entries.length
+    ? entries
+        .map(([id, quantity]) => {
+          const product = getProduct(id);
 
-    function renderCart() {
-      const holder = document.getElementById('cartItems');
-      const entries = Object.entries(cart);
-      if (!entries.length) {
-        holder.innerHTML = '<p class="small">Your cart is empty. Add products from the catalog above.</p>';
-      } else {
-        holder.innerHTML = entries.map(([id, qty]) => {
-          const p = productById(id);
-          return `<div class="cart-line"><div><strong>${p.name}</strong><br><span class="small">${formatNaira(p.price)} each</span></div><div class="qty-controls"><button type="button" onclick="updateQty('${id}',-1)">−</button><strong>${qty}</strong><button type="button" onclick="updateQty('${id}',1)">+</button></div><strong>${formatNaira(p.price * qty)}</strong></div>`;
-        }).join('');
-      }
-      document.getElementById('subtotal').textContent = formatNaira(subtotal());
-      document.getElementById('deliveryFee').textContent = formatNaira(deliveryFee());
-      const discount = discountAmount();
-      document.getElementById('total').textContent = discount ? `${formatNaira(total())} (GAS10 applied)` : formatNaira(total());
-    }
+          return `
+            <div class="cart-line">
+              <div>
+                <strong>${product.name}</strong>
+                <div class="small">${formatNaira(product.price)} each</div>
+              </div>
+              <div class="qty-controls" aria-label="${product.name} quantity controls">
+                <button type="button" data-quantity-id="${id}" data-quantity-change="-1" aria-label="Remove one ${product.name}">-</button>
+                <strong>${quantity}</strong>
+                <button type="button" data-quantity-id="${id}" data-quantity-change="1" aria-label="Add one ${product.name}">+</button>
+              </div>
+              <strong>${formatNaira(product.price * quantity)}</strong>
+            </div>
+          `;
+        })
+        .join("")
+    : '<p class="small">Your cart is empty. Add products from the catalog above.</p>';
 
-    function generateOrderId() {
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      const dd = String(now.getDate()).padStart(2, '0');
-      const rand = Math.floor(1000 + Math.random() * 9000);
-      return `GAS-${yyyy}${mm}${dd}-${rand}`;
-    }
+  selectors.subtotal.textContent = formatNaira(getSubtotal());
+  selectors.deliveryFee.textContent = formatNaira(getDeliveryFee());
 
-    function showNotice(id, message, kind = 'success') {
-      const box = document.getElementById(id);
-      box.className = 'notice show' + (kind === 'error' ? ' error' : kind === 'warning' ? ' warning' : '');
-      box.innerHTML = message;
-    }
+  const discount = getDiscount();
+  selectors.total.textContent = discount
+    ? `${formatNaira(getTotal())} (GAS10 applied)`
+    : formatNaira(getTotal());
+}
 
-    function placeOrder() {
-      if (!Object.keys(cart).length) return showNotice('orderNotice', 'Please add at least one product to your cart before checkout.', 'error');
-      const name = document.getElementById('customerName').value.trim();
-      const phone = document.getElementById('customerPhone').value.trim();
-      const address = document.getElementById('address').value.trim();
-      if (!name || !phone || !address) return showNotice('orderNotice', 'Please enter your name, phone number, and delivery/pickup address note.', 'error');
-      const items = Object.entries(cart).map(([id, qty]) => ({ ...productById(id), qty }));
-      const order = {
-        id: generateOrderId(),
-        createdAt: new Date().toLocaleString(),
-        name,
-        phone,
-        email: document.getElementById('customerEmail').value.trim(),
-        fulfilment: document.getElementById('fulfilment').value,
-        address,
-        paymentMethod: document.getElementById('paymentMethod').value,
-        promoCode: document.getElementById('promoCode').value.trim().toUpperCase(),
-        notes: document.getElementById('notes').value.trim(),
-        items,
-        subtotal: subtotal(),
-        deliveryFee: deliveryFee(),
-        discount: discountAmount(),
-        total: total(),
-        status: document.getElementById('fulfilment').value === 'Pickup' ? 'Ready for station confirmation' : 'Order received — dispatch pending',
-        stage: 1
-      };
-      Storage.saveOrder(order);
-      cart = {};
-      renderCart();
-      document.getElementById('trackInput').value = order.id;
-      showNotice('orderNotice', `<strong>Demo checkout complete!</strong><br>Your generated order ID is <strong>${order.id}</strong>. Total: <strong>${formatNaira(order.total)}</strong>. Use this ID in the tracking section below.`);
-    }
+function addToCart(id) {
+  cart.set(id, (cart.get(id) || 0) + 1);
+  renderCart();
+  document.querySelector("#order").scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
-    function trackOrder() {
-      const id = document.getElementById('trackInput').value.trim().toUpperCase();
-      const order = Storage.getOrder(id);
-      if (!order) {
-        return showNotice('trackResult', `No demo order found for <strong>${id || 'blank ID'}</strong>. Place a demo order first, then paste the generated order ID here.`, 'warning');
-      }
-      const itemList = order.items.map(i => `${i.qty}× ${i.name}`).join(', ');
-      showNotice('trackResult', `<strong>${order.id}</strong><br>Status: <strong>${order.status}</strong><br>Customer: ${order.name} · ${order.fulfilment}<br>Items: ${itemList}<br>Total: <strong>${formatNaira(order.total)}</strong><br><span class="small">Created: ${order.createdAt}. In production, this status would be updated by staff from an admin dashboard.</span>`);
-    }
+function updateQuantity(id, change) {
+  const nextQuantity = Math.max(0, (cart.get(id) || 0) + Number(change));
 
-    document.getElementById('placeOrder').addEventListener('click', placeOrder);
-    document.getElementById('trackBtn').addEventListener('click', trackOrder);
-    document.getElementById('clearCart').addEventListener('click', () => { cart = {}; renderCart(); showNotice('orderNotice', 'Cart cleared.', 'warning'); });
-    document.getElementById('fulfilment').addEventListener('change', renderCart);
-    document.getElementById('promoCode').addEventListener('input', renderCart);
-    document.getElementById('trackInput').addEventListener('keydown', e => { if (e.key === 'Enter') trackOrder(); });
+  if (nextQuantity === 0) {
+    cart.delete(id);
+  } else {
+    cart.set(id, nextQuantity);
+  }
 
-    renderProducts();
-    renderCart();
-    const send = () => parent.postMessage(
-      { type: 'web_page_height', height: document.body.scrollHeight },
-      '*'
+  renderCart();
+}
+
+function generateOrderId() {
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const rand = Math.floor(1000 + Math.random() * 9000);
+
+  return `GAS-${yyyy}${mm}${dd}-${rand}`;
+}
+
+function showNotice(element, message, kind = "success") {
+  element.className = `notice show${kind === "error" ? " error" : ""}${kind === "warning" ? " warning" : ""}`;
+  element.innerHTML = message;
+}
+
+function createOrder() {
+  const form = selectors.checkoutForm;
+  const fields = form.elements;
+  const customerName = fields.customerName.value.trim();
+  const customerPhone = fields.customerPhone.value.trim();
+  const address = fields.address.value.trim();
+
+  if (!cart.size) {
+    showNotice(selectors.orderNotice, "Please add at least one product before checkout.", "error");
+    return null;
+  }
+
+  if (!customerName || !customerPhone || !address) {
+    showNotice(selectors.orderNotice, "Please enter your name, phone number, and address or pickup note.", "error");
+    return null;
+  }
+
+  return {
+    id: generateOrderId(),
+    createdAt: new Date().toLocaleString(),
+    name: customerName,
+    phone: customerPhone,
+    email: fields.customerEmail.value.trim(),
+    fulfilment: fields.fulfilment.value,
+    address,
+    paymentMethod: fields.paymentMethod.value,
+    promoCode: fields.promoCode.value.trim().toUpperCase(),
+    notes: fields.notes.value.trim(),
+    items: [...cart.entries()].map(([id, quantity]) => ({ ...getProduct(id), quantity })),
+    subtotal: getSubtotal(),
+    deliveryFee: getDeliveryFee(),
+    discount: getDiscount(),
+    total: getTotal(),
+    status: fields.fulfilment.value === "Pickup" ? "Ready for station confirmation" : "Order received, dispatch pending",
+    stage: 1
+  };
+}
+
+function placeOrder(event) {
+  event.preventDefault();
+
+  const order = createOrder();
+  if (!order) return;
+
+  storage.saveOrder(order);
+  cart.clear();
+  renderCart();
+
+  selectors.trackInput.value = order.id;
+  showNotice(
+    selectors.orderNotice,
+    `<strong>Demo checkout complete.</strong><br>Your order ID is <strong>${order.id}</strong>. Total: <strong>${formatNaira(order.total)}</strong>.`
+  );
+}
+
+function trackOrder() {
+  const id = selectors.trackInput.value.trim().toUpperCase();
+  const order = storage.getOrder(id);
+
+  if (!order) {
+    showNotice(
+      selectors.trackResult,
+      `No demo order found for <strong>${id || "blank ID"}</strong>. Place a demo order first, then paste the generated ID here.`,
+      "warning"
     );
-    window.addEventListener('load', send);
-    new ResizeObserver(send).observe(document.documentElement);
+    return;
+  }
+
+  const items = order.items.map((item) => `${item.quantity} x ${item.name}`).join(", ");
+  showNotice(
+    selectors.trackResult,
+    `<strong>${order.id}</strong><br>Status: <strong>${order.status}</strong><br>Customer: ${order.name} - ${order.fulfilment}<br>Items: ${items}<br>Total: <strong>${formatNaira(order.total)}</strong><br><span class="small">Created: ${order.createdAt}. Production tracking would be updated by staff.</span>`
+  );
+}
+
+function clearCart() {
+  cart.clear();
+  renderCart();
+  showNotice(selectors.orderNotice, "Cart cleared.", "warning");
+}
+
+function bindEvents() {
+  selectors.productGrid.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-add-product]");
+    if (button) addToCart(button.dataset.addProduct);
+  });
+
+  selectors.cartItems.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-quantity-id]");
+    if (!button) return;
+    updateQuantity(button.dataset.quantityId, button.dataset.quantityChange);
+  });
+
+  selectors.checkoutForm.addEventListener("submit", placeOrder);
+  selectors.clearCart.addEventListener("click", clearCart);
+  selectors.fulfilment.addEventListener("change", renderCart);
+  selectors.promoCode.addEventListener("input", renderCart);
+  selectors.trackBtn.addEventListener("click", trackOrder);
+  selectors.trackInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") trackOrder();
+  });
+
+  selectors.navToggle.addEventListener("click", () => {
+    const isOpen = selectors.navLinks.classList.toggle("is-open");
+    selectors.navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  selectors.navLinks.addEventListener("click", (event) => {
+    if (event.target.matches("a")) {
+      selectors.navLinks.classList.remove("is-open");
+      selectors.navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+function sendPreviewHeight() {
+  if (window.parent === window) return;
+  window.parent.postMessage({ type: "web_page_height", height: document.body.scrollHeight }, "*");
+}
+
+renderProducts();
+renderCart();
+bindEvents();
+
+window.addEventListener("load", sendPreviewHeight);
+new ResizeObserver(sendPreviewHeight).observe(document.documentElement);
