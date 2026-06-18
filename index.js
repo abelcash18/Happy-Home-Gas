@@ -1,6 +1,6 @@
 const gasPrices = [
-  { name: "1kg Cooking Gas", detail: "Daily refill rate", price: 1500 },
-  { name: "3kg Cooking Gas", detail: "Small cylinder refill", price: 4500 },
+  { name: "1kg Cooking Gas", detail: "Daily refill rate", price: 1800 },
+  { name: "3kg Cooking Gas", detail: "Small cylinder refill", price: 5400 },
   { name: "6kg Cooking Gas", detail: "Family-size refill", price: 9000 },
   { name: "12.5kg Cooking Gas", detail: "Large home or business refill", price: 18500 }
 ];
