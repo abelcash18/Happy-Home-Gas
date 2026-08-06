@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Happy Home Gas shows daily cooking gas prices, accessories, location, contact details, and station activity photos." />
+  <title>Happy Home Gas | Gas Prices, Accessories & Contact</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Happy Home Gas home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>
+          <strong>Happy Home Gas</strong>
+          <small>Gas, accessories, POS</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#prices">Prices</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Daily cooking gas price updates</span>
+          <h1>Know today's gas and accessory prices before you visit.</h1>
+          <p class="lead">
+            Happy Home Gas provides cooking gas refills, trusted accessories, POS services, and daily station activity updates for customers.
+          </p>
+          <div class="action-row">
+            <a class="btn btn-primary" href="#prices">Check prices</a>
+            <a class="btn btn-light" href="https://wa.me/2348076786000" target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
+        </div>
+
+        <figure class="hero-media">
+          <img src="img.jpg" alt="Happy Home Gas station POS service banner" />
+          <figcaption>
+            <strong>Open daily: 6:30am - 9:00pm</strong>
+            <span>Gas refills, accessories, withdrawals, deposits, transfers, bill payments, and subscriptions.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="prices" class="section section-muted">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Price List</span>
+            <h2>Gas and accessories.</h2>
+          </div>
+          <p>Update these prices whenever your daily gas rate changes. Customers can contact you by WhatsApp or email to confirm availability.</p>
+        </div>
+
+        <div class="price-board">
+          <article class="price-panel">
+            <div>
+              <span class="tag">Cooking Gas</span>
+              <h3>Gas refill prices</h3>
+            </div>
+            <div id="gasPriceList" class="price-list" aria-live="polite">
+              <div class="price-loading-placeholder text-muted small">Loading today's gas rates...</div>
+            </div>
+          </article>
+
+          <article class="price-panel">
+            <div>
+              <span class="tag">Accessories</span>
+              <h3>Accessory prices</h3>
+            </div>
+            <div id="accessoryPriceList" class="price-list" aria-live="polite">
+              <div class="price-loading-placeholder text-muted small">Loading product prices...</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What We Offer</span>
+          <h2>Everyday gas station services in one place.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">01</span>
+            <h3>Gas refills</h3>
+            <p>Clean cylinder handling and refill support for homes, restaurants, and small businesses.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">02</span>
+            <h3>Gas accessories</h3>
+            <p>Regulators, hoses, clips, burners, and other essentials customers ask for often.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">03</span>
+            <h3>POS services</h3>
+            <p>Withdrawals, deposits, transfers, subscriptions, airtime, cable TV, and utility payments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section section-muted">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Gallery</span>
+            <h2>Daily activity photos.</h2>
+          </div>
+          <p>Add real station photos here: refills, staff at work, product stock, POS service desk, and customer activity.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item featured">
+            <img src="img.jpg" alt="Happy Home Gas service banner" />
+            <figcaption>POS and utility service banner</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 2</span>
+            <figcaption>Gas refill activity</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 3</span>
+            <figcaption>Accessories display</figcaption>
+          </figure>
+          <figure class="gallery-placeholder">
+            <span>Photo 4</span>
+            <figcaption>Station staff at work</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow">Location</span>
+            <h2>Find Happy Home Gas.</h2>
+          </div>
+          <p>Replace the map coordinates with your exact shop location when ready.</p>
+        </div>
+
+        <div class="location-layout">
+          <div class="map-frame">
+            <iframe
+              title="Happy Home Gas location on OpenStreetMap"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=5.6569%2C6.2710%2C5.6669%2C6.2790&amp;layer=mapnik&amp;marker=6.2750783%2C5.661973"
+              loading="lazy">
+            </iframe>
+          </div>      
+
+          <aside class="card contact-card">
+            <h3>Visit the station</h3>
+            <p><strong>Address:</strong>Along Igharo St, Okabere St, opposite banga farm, off Ewere Street, Oka, Benin City 300105, Edo-State.</p>
+            <p><strong>Hours:</strong> 6:30am - 9:00pm</p>
+            <p><strong>Delivery areas:</strong> Within Okabere.</p>
+            <a class="map-link" href="https://www.openstreetmap.org/?mlat=6.27508&amp;mlon=5.66197#map=17/6.27508/5.66197" target="_blank" rel="noopener">Open larger map</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-muted">
+      <div class="container">
+        <div class="contact-strip">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>Ask about today's prices or availability.</h2>
+            <p>Email or WhatsApp Happy Home Gas for current gas rates, accessories, POS service questions, or directions.</p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:josephabel540@gmail.com">Email us</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/2348076786000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand footer-brand">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span>
+        <strong>Happy Home Gas</strong>
+        <small>Daily gas prices, accessories, POS services, and station updates. © 2026</small>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
