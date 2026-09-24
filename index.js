@@ -19,7 +19,7 @@ const CONFIG = {
   phone: "2348076786000",
   formattedPhone: "+234 807 678 6000",
   email: "josephabel540@gmail.com",
-  ratePerKg: 1400,
+  ratePerKg: 1500,
   openHour: 6.5, // 6:30 AM
   closeHour: 21,  // 9:00 PM
   address: "Along Igharo St, Okabere St, opposite Banga Farm, off Ewere Street, Oka, Benin City 300105, Edo-State"
@@ -27,14 +27,14 @@ const CONFIG = {
 
 // Pricing Data
 const gasRates = [
-  { size: "1kg Refill", kg: 1, desc: "Quick student/single meal refill", price: 1400, popular: false },
-  { size: "3kg Refill", kg: 3, desc: "Small camping cylinder refill", price: 4200, popular: false },
-  { size: "5kg Refill", kg: 5, desc: "Compact home cylinder refill", price: 7000, popular: false },
-  { size: "6kg Refill", kg: 6, desc: "Popular family starter refill", price: 8400, popular: true },
-  { size: "10kg Refill", kg: 10, desc: "Medium household cooking refill", price: 14000, popular: false },
-  { size: "12.5kg Refill", kg: 12.5, desc: "Standard household favorite", price: 17500, popular: true },
-  { size: "25kg Refill", kg: 25, desc: "Heavy domestic & small restaurant", price: 35000, popular: false },
-  { size: "50kg Refill", kg: 50, desc: "Commercial bakeries & catering", price: 70000, popular: false }
+  { size: "1kg Refill", kg: 1, desc: "Quick student/single meal refill", price: 1500, popular: false },
+  { size: "3kg Refill", kg: 3, desc: "Small camping cylinder refill", price: 4500, popular: false },
+  { size: "5kg Refill", kg: 5, desc: "Compact home cylinder refill", price: 7500, popular: false },
+  { size: "6kg Refill", kg: 6, desc: "Popular family starter refill", price: 9000, popular: true },
+  { size: "10kg Refill", kg: 10, desc: "Medium household cooking refill", price: 15000, popular: false },
+  { size: "12.5kg Refill", kg: 12.5, desc: "Standard household favorite", price: 19500, popular: true },
+  { size: "25kg Refill", kg: 25, desc: "Heavy domestic & small restaurant", price: 37500, popular: false },
+  { size: "50kg Refill", kg: 50, desc: "Commercial bakeries & catering", price: 75000, popular: false }
 ];
 
 const accessoryProducts = [
