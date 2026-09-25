@@ -1644,7 +1644,9 @@ p {
     right: 0;
     background: white;
     flex-direction: column;
-    padding: 24px;
+    padding: 16px 18px 24px;
+    max-height: calc(100dvh - 74px);
+    overflow-y: auto;
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
     transform: translateY(-110%);
@@ -1674,7 +1676,65 @@ p {
 
 @media (max-width: 600px) {
   .section {
-    padding: 56px 0;
+    padding: 44px 0;
+  }
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+  h1 {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+    line-height: 1.08;
+  }
+  h2 {
+    font-size: clamp(1.65rem, 7vw, 2.1rem);
+  }
+  .nav {
+    min-height: 68px;
+    gap: 10px;
+  }
+  .brand {
+    gap: 9px;
+    min-width: 0;
+  }
+  .brand-text strong {
+    font-size: 1rem;
+  }
+  .brand-text small {
+    font-size: 0.65rem;
+  }
+  .brand-icon-box {
+    width: 40px;
+    height: 40px;
+  }
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+  .hero {
+    padding: 38px 0 44px;
+  }
+  .hero-grid {
+    gap: 30px;
+  }
+  .hero-copy .lead {
+    font-size: 1rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .hero-trust-row {
+    gap: 10px;
+    margin: 22px 0;
+  }
+  .hero-card {
+    border-radius: var(--radius-lg);
+  }
+  .hero-floating-review {
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    padding: 9px 12px;
   }
   .packages-grid,
   .services-grid,
@@ -1685,7 +1745,7 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
   .calc-interactive, .calc-receipt {
-    padding: 24px;
+    padding: 22px 18px;
   }
   .hero-trust-row {
     grid-template-columns: 1fr;
@@ -1701,6 +1761,66 @@ p {
     grid-template-columns: 1fr;
   }
   .hero-image {
-    height: 320px;
+    height: clamp(230px, 72vw, 340px);
+    object-position: center 54%;
+  }
+  .calc-cylinder-selector {
+    gap: 8px;
+  }
+  .calc-size-btn {
+    font-size: 0.88rem;
+    padding: 11px 5px;
+  }
+  .pos-banner-strip {
+    padding: 20px 16px;
+    gap: 22px;
+  }
+  .gallery-grid {
+    gap: 14px;
+  }
+  .gallery-img {
+    height: 230px;
+  }
+  .gallery-img-poster {
+    object-fit: contain;
+    background: var(--ink-50);
+  }
+  .gallery-caption {
+    padding: 14px 15px;
+  }
+  .section-head {
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    padding: 5px 11px;
+  }
+  .top-bar {
+    font-size: 0.78rem;
+  }
+  .package-card,
+  .service-card,
+  .safety-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+  .brand-text small {
+    display: none;
+  }
+  .hero-badge-floating {
+    top: 10px;
+    left: 10px;
+    padding: 8px 11px;
+  }
+  .hero-badge-floating strong {
+    font-size: 1.05rem;
+  }
+  .gallery-img {
+    height: 200px;
   }
 }
