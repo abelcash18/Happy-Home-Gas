@@ -1692,6 +1692,22 @@ p {
     min-height: 68px;
     gap: 10px;
   }
+  .nav-menu {
+    top: 68px;
+    gap: 4px;
+    padding: 12px 16px 20px;
+  }
+  .nav-menu .nav-link {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 11px 14px;
+    font-size: 1rem;
+  }
+  .nav-actions .btn {
+    display: none;
+  }
   .brand {
     gap: 9px;
     min-width: 0;
