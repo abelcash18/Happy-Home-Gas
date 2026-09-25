@@ -1781,6 +1781,23 @@ p {
   .gallery-img {
     height: 230px;
   }
+  .faq-list {
+    gap: 10px;
+  }
+  .faq-button {
+    padding: 17px 16px;
+    gap: 12px;
+    font-size: 0.96rem;
+    line-height: 1.4;
+  }
+  .faq-icon {
+    flex: 0 0 24px;
+    text-align: center;
+  }
+  .faq-content {
+    padding: 0 16px 17px;
+    font-size: 0.9rem;
+  }
   .gallery-img-poster {
     object-fit: contain;
     background: var(--ink-50);

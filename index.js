@@ -410,6 +410,18 @@ function setupExpiryChecker() {
 // -----------------------------------------------------------------------------
 function setupFaq() {
   const faqButtons = document.querySelectorAll(".faq-button");
+  const mobileLayout = window.matchMedia("(max-width: 600px)");
+
+  // Keep the FAQ section compact when visitors reach it on a phone.
+  const collapseFaqOnMobile = () => {
+    if (!mobileLayout.matches) return;
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      item.classList.remove("is-open");
+      item.querySelector(".faq-button")?.setAttribute("aria-expanded", "false");
+    });
+  };
+  collapseFaqOnMobile();
+  mobileLayout.addEventListener("change", collapseFaqOnMobile);
 
   faqButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
